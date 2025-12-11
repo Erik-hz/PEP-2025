@@ -132,10 +132,10 @@ class SimulacionController extends Controller
 
         foreach ($tabla as $i => $fila) {
 
-            $dias = $fila['periodo'];       // L5, M5, N5 ...
+            $dias = $fila['periodo']-1;       // L5, M5, N5 ...
             $flujo = $fila['flujo'];        // L10, M10 ...
             $acumulado = $fila['acumulado']; // L11, M11 ...
-            $sumaFlujosPrevios += $flujo;
+            
             // Cuando Excel encuentra el primer ACUMULADO > 0
             if ($acumulado > 0) {
 
@@ -145,7 +145,7 @@ class SimulacionController extends Controller
                 // PRI = días + ( (inv - suma_flujo_previos) / flujo_actual )
                 return $dias + (($inv - $sumaFlujosPrevios) / $flujo);
             }
-
+            $sumaFlujosPrevios += $flujo;
             // Suma de flujos previos (SUMA(L10:M10:N10...))
             
         }
