@@ -140,9 +140,6 @@ class SimulacionController extends Controller
             if ($acumulado > 0) {
 
                 // Si es el último periodo (P en Excel)
-                if ($i == $total-1) {
-                    return $dias;
-                }
 
                 // Si no es el último, aplica la fórmula generalizada:
                 // PRI = días + ( (inv - suma_flujo_previos) / flujo_actual )
